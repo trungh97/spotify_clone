@@ -68,9 +68,10 @@ function Player() {
       debounceAdjustVolume(volume);
     }
   }, [volume]);
+  console.log(songInfo)
 
   return (
-    <div className="h-16 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8">
+    <div className="h-16 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8 border-t border-gray-800">
       {/* LEFT */}
       <div className="flex items-center space-x-4">
         <img
@@ -80,7 +81,7 @@ function Player() {
         />
         <div>
           <h3>{songInfo?.name}</h3>
-          <p>{songInfo?.artist?.[0]?.name}</p>
+          <p className="text-xs text-gray-500">{songInfo?.artists?.[0]?.name}</p>
         </div>
       </div>
 

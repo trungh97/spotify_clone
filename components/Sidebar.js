@@ -22,7 +22,6 @@ function Sidebar() {
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getUserPlaylists().then((data) => {
-        console.log(data);
         setPlaylist(data.body.items);
         setPlaylistId(data.body.items?.[0]?.id);
       });
@@ -65,11 +64,22 @@ function Sidebar() {
           <p
             key={item.id}
             onClick={() => setPlaylistId(item.id)}
-            className="cursor-pointer hover:text-white"
+            className={`cursor-pointer ${
+              playlistId === item.id && "text-white font-semibold"
+            } hover:text-white`}
           >
             {item.name}
           </p>
         ))}
+        <hr className="border-t-[0.1px] border-gray-900" />
+
+        <button
+          onClick={signOut}
+          className="flex items-center space-x-4 hover:text-white"
+        >
+          <LogoutIcon className="h-5 w-5" />
+          <p>Logout</p>
+        </button>
       </div>
     </div>
   );
